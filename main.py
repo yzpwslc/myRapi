@@ -1,3 +1,4 @@
+from __future__ import print_function
 import os
 import sys
 import cv2
@@ -27,18 +28,27 @@ class SendVideo(object):
         return img_io
 
     def camera(self):
-        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        cam = cv2.VideoCapture(0)
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        self.cam = cv2.VideoCapture(0)
         while cam.isOpened():
-            ret, frame = cam.read()
+            print('camera is opening!')
+            ret, frame = self.cam.read()
             if ret:
                 jpeg = self.img_to_stream(frame)
-                sock.sendto(jpeg, self.addr)
-            cam.release()
-            sock.close()
+                self.sock.sendto(jpeg, self.addr)
+            self.cam.release()
+            self.sock.close()
+
+    def close_source(self):
+        self.cam.release()
+        self.sock.close()
+        print('closed camera!...')
 
 
 if __name__ == '__main__':
     s = SendVideo()
+    s.camera()
+    time.sleep(10)
+
 
 
