@@ -48,8 +48,8 @@ class SendVideo(object):
 if __name__ == '__main__':
     s = SendVideo()
     s.camera()
-    time.sleep(10)
-    s.close_source()
+    # time.sleep(10)
+    # s.close_source()
 
 
 
