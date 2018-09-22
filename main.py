@@ -29,7 +29,7 @@ class SendVideo(object):
 
     def camera(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        self.cam = cv2.VideoCapture(0)
+        self.cam = cv2.VideoCapture(1)
         while self.cam.isOpened():
             print('camera is opening!')
             ret, frame = self.cam.read()
