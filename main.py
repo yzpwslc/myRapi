@@ -36,8 +36,8 @@ class SendVideo(object):
             if ret:
                 jpeg = self.img_to_stream(frame)
                 self.sock.sendto(jpeg, self.addr)
-            self.cam.release()
-            self.sock.close()
+        self.cam.release()
+        self.sock.close()
 
     def close_source(self):
         self.cam.release()
