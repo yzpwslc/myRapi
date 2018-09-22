@@ -32,6 +32,7 @@ class SendVideo(object):
         self.cam = cv2.VideoCapture(1)
         while self.cam.isOpened():
             print('camera is opening!')
+            time.sleep(1 / 50)
             ret, frame = self.cam.read()
             if ret:
                 jpeg = self.img_to_stream(frame)
