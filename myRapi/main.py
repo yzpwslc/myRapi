@@ -30,6 +30,7 @@ class SendVideo(object):
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         cam = cv2.VideoCapture(0)
         while cam.isOpened():
+            time.sleep(1 / 50)
             ret, frame = cam.read()
             if ret:
                 jpeg = self.img_to_stream(frame)

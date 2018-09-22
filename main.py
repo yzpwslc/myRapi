@@ -31,7 +31,7 @@ class SendVideo(object):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.cam = cv2.VideoCapture(1)
         while self.cam.isOpened():
-            print('camera is opening!')
+            # print('camera is opening!')
             time.sleep(1 / 50)
             ret, frame = self.cam.read()
             if ret:
